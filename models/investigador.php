@@ -21,7 +21,7 @@ class Investigador extends Sistema{
             $sql = "INSERT INTO usuario(correo, contrasena) VALUES (:correo, :contrasena)";
             $sth = $this->_db->prepare($sql);
             $sth->bindParam(":correo", $data['correo'], PDO::PARAM_STR);
-            $contrasena = password_hash($data['password'], PASSWORD_DEFAULT);
+            $contrasena = md5($data['password']);
             $sth->bindParam(":contrasena", $contrasena, PDO::PARAM_STR);
             $sth->execute();
             $sql = "SELECT * FROM usuario WHERE correo = :correo";
@@ -30,11 +30,15 @@ class Investigador extends Sistema{
             $sth->execute();
             $usuario = $sth->fetch(PDO::FETCH_ASSOC);
             $id_usuario = $usuario['id_usuario'];
-            $sql = "INSERT INTO usuario_rol(id_usuario, id_rol) VALUES (:id_usuario, 2)";
+            $sql = "INSERT INTO usuario_rol(id_usuario, id_rol) VALUES (:id_usuario, :id_rol)";
             $sth = $this->_db->prepare($sql);
             $sth->bindParam(":id_usuario", $id_usuario, PDO::PARAM_INT);
+            $sth->bindParam(":id_rol", 2, PDO::PARAM_INT);
             $sth->execute();
-            $sql = "SELECT * FROM investigador WHERE ORDER BY id_investigador DESC LIMIT 1";
+            $sth->bindParam(":id_usuario", $id_usuario, PDO::PARAM_INT);
+            $sth->bindParam(":id_rol", 3, PDO::PARAM_INT);
+            $sth->execute();
+            $sql = "SELECT * FROM investigador ORDER BY id_investigador DESC LIMIT 1";
             $sth = $this->_db->prepare($sql);
             $sth->execute();
             $investigador = $sth->fetch(PDO::FETCH_ASSOC);
@@ -43,6 +47,14 @@ class Investigador extends Sistema{
             $sth->bindParam(":id_usuario", $id_usuario, PDO::PARAM_INT);
             $sth->bindParam(":id_investigador", $investigador['id_investigador'], PDO::PARAM_INT);
             $sth->execute();
+            $para = $data['correo'];
+            $asunto = "Red de Investigación";
+            $mensaje = "Su cuenta de Investigador fue creada exitosamente!!.
+                <br><br>Correo: ". $data['correo']. "
+                <br><br>Contraseña: ". $data['contrasena']. "
+                <br><br>Atentamente, Adinistrador de Red de Investigación.";
+            $nombre = $data['nombre']." ". $data['primer_apellido']. " ". $data['segundo_apellido'];
+            $mail = $this->enviarCorreo($para, $asunto, $mensaje, $nombre);
             $this->_db->commit();
             return $affectedRows;
         } catch(Exception $e){

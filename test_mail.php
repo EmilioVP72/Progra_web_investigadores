@@ -16,6 +16,14 @@ require 'vendor/autoload.php';
 //Create a new PHPMailer instance
 $mail = new PHPMailer();
 
+$mail->SMTPOptions = [
+    'ssl' => [
+        'verify_peer' => false,
+        'verify_peer_name' => false,
+        'allow_self_signed' => true
+    ]
+];
+
 //Tell PHPMailer to use SMTP
 $mail->isSMTP();
 
@@ -48,7 +56,7 @@ $mail->SMTPAuth = true;
 $mail->Username = '22030918@itcelaya.edu.mx';
 
 //Password to use for SMTP authentication
-$mail->Password = '';
+$mail->Password = 'fwrrlwwizgkksqbd';
 
 //Set who the message is to be sent from
 //Note that with gmail you can only use your account address (same as `Username`)
