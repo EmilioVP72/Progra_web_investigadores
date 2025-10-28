@@ -1,0 +1,85 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
+  background-color: #f4f8fb;
+  margin: 0;
+}
+
+
+#miembros h1 {
+  text-align: center;
+}
+
+.navbar {
+  background-color: #004080 !important;
+}
+.navbar .nav-link, 
+.navbar-brand {
+  color: white !important;
+}
+.navbar .nav-link:hover {
+  color: #cce6ff !important;
+}
+.dropdown-menu {
+  background-color: #004080;
+  border: none;
+}
+.dropdown-menu .dropdown-item {
+  color: #ffffff;
+}
+.dropdown-menu .dropdown-item:hover {
+  background-color: #00509e;
+  color: #cce6ff;
+}
+
+main {
+  flex: 1; 
+}
+
+.custom-table thead {
+  background-color: #004080;
+  color: white;
+}
+.custom-table tbody tr:hover {
+  background-color: #e6f0ff;
+}
+
+.custom-table th,
+.custom-table td {
+  text-align: center;    
+  vertical-align: middle;   
+}
+
+footer {
+  background: #00264d;
+  color: #ffffff;
+  padding: 2rem 0;
+  margin-top: 2rem;
+}
+footer h5 {
+  color: #99ccff;
+}
+footer a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+footer a:hover {
+  text-decoration: underline;
+  color: #cce6ff;
+}
+
+.icon-instagram {
+  display: inline-block;
+  width: 40px;   
+  height: 40px;
+  background: url("../images/ig.png") no-repeat;
+  background-position: 0 0;
+  background-size: auto;
+  transition: transform 0.3s ease;
+}
+
+.icon-instagram:hover {
+  transform: scale(1.1);
+}

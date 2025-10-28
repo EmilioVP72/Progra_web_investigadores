@@ -1,0 +1,73 @@
+body {
+  background-color: #f4f8fb;
+}
+
+header h1 {
+  background: linear-gradient(135deg, #003366, #00509e);
+  color: white;
+  padding: 2rem;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.navbar {
+  background-color: #004080 !important;
+}
+.navbar .nav-link, 
+.navbar-brand {
+  color: white !important;
+}
+.navbar .nav-link:hover {
+  color: #cce6ff !important;
+}
+
+.card {
+  border: none;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+}
+
+footer {
+  background: #00264d;
+  color: #ffffff;
+  padding: 2rem 0;
+  margin-top: 2rem;
+}
+footer h5 {
+  color: #99ccff;
+}
+footer a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+footer a:hover {
+  text-decoration: underline;
+  color: #cce6ff;
+}
+
+#carouselExample {
+  max-width: 800px; 
+  margin: 0 auto;   
+}
+
+#carouselExample img {
+  border-radius: 10px; 
+}
+
+.icon-instagram {
+  display: inline-block;
+  width: 40px;   
+  height: 40px;
+  background: url("../images/ig.png") no-repeat;
+  background-position: 0 0;
+  background-size: auto;
+  transition: transform 0.3s ease;
+}
+
+.icon-instagram:hover {
+  transform: scale(1.1);
+}
