@@ -114,6 +114,13 @@ class Sistema{
     function enviarCorreo($para, $asunto, $mensaje, $nombre = null){
         require '../vendor/autoload.php';
         $mail = new PHPMailer();
+        $mail->SMTPOptions = [
+            'ssl' => [
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+                'allow_self_signed' => true
+            ]
+        ];
         $mail->isSMTP();
         $mail->SMTPDebug = SMTP::DEBUG_OFF;
         $mail->Host = 'smtp.gmail.com';
@@ -121,7 +128,7 @@ class Sistema{
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->SMTPAuth = true;
         $mail->Username = '22030918@itcelaya.edu.mx';
-        $mail->Password = '';
+        $mail->Password = 'fwrrlwwizgkksqbd';
         $mail->setFrom('22030918@itcelaya.edu.mx', 'Emilio Francisco Vazquez Perez');
         $mail->addAddress($para, $nombre ? $nombre : 'Red de Investigación');
         $mail->Subject = $asunto;

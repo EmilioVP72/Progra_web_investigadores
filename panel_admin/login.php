@@ -52,6 +52,7 @@ switch ($action){
         break;
     
     case 'token':
+        $peticion = $_GET;
         require_once('./views/login/token.php');
         break;
 

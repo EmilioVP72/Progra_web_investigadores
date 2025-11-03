@@ -6,9 +6,9 @@
         <div class="mb-3 row">
             <label for="contrasena" class="col-sm-2 col-form-label">Password</label>
             <div class="col-sm-10">
-                <input name="contrasena" type="password" class="form-control" id="contrasena">
-                <input name="token" type="hidden" class="form-control" id="token" values="<?php echo $_GET['token'];?>">
-                <input name="correo" type="hidden" class="form-control" id="correo" values="<?php echo $_GET['correo'];?>">
+                <input name="_contrasena" type="password" class="form-control" id="_contrasena">
+                <input name="_token" type="hidden" class="form-control" id="_token" value="<?php echo $peticion['token'];?>">
+                <input name="_correo" type="hidden" class="form-control" id="_correo" value="<?php echo $peticion['correo'];?>">
             </div>
         </div>
         <div class="mb-3">
