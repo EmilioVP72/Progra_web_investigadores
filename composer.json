@@ -1,6 +1,9 @@
 {
     "require": {
         "phpmailer/phpmailer": "^7.0",
-        "spipu/html2pdf": "^5.3"
+        "spipu/html2pdf": "^5.3",
+        "phpoffice/phpspreadsheet": "^5.2",
+        "box/spout": "^3.3",
+        "mercadopago/dx-php": "^3.7"
     }
 }

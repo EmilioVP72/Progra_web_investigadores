@@ -11,6 +11,7 @@
             <li><a href="#" class="text-light">Inicio</a></li>
             <li><a href="#" class="text-light">Investigadores</a></li>
             <li><a href="#" class="text-light">Contacto</a></li>
+            <li><a href=<?php __DIR__?>."/panel_admin/login.php" class="text-light">Panel</a></li>
           </ul>
         </div>
         <div class="col-md-4">

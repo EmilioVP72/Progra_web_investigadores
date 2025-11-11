@@ -105,14 +105,14 @@ class Sistema{
         if(!in_array($rol, $roles)){
             $alerta['mensaje'] = "Usted no tiene el rol adecuado";
             $alerta['tipo'] = "danger";
-            include_once("./views/error.php");
+            include_once(__DIR__ . "/../panel_admin/views/error.php");
             die();
         }
         return false;
     }
 
     function enviarCorreo($para, $asunto, $mensaje, $nombre = null){
-        require '../vendor/autoload.php';
+        require_once __DIR__ . '/../vendor/autoload.php';
         $mail = new PHPMailer();
         $mail->SMTPOptions = [
             'ssl' => [
@@ -128,7 +128,7 @@ class Sistema{
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->SMTPAuth = true;
         $mail->Username = '22030918@itcelaya.edu.mx';
-        $mail->Password = '';
+        $mail->Password = 'fwrrlwwizgkksqbd';
         $mail->setFrom('22030918@itcelaya.edu.mx', 'Emilio Francisco Vazquez Perez');
         $mail->addAddress($para, $nombre ? $nombre : 'Red de Investigación');
         $mail->Subject = $asunto;

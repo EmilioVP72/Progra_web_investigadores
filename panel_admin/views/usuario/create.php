@@ -1,6 +1,6 @@
 <?php
-require_once("../../models/sistema.php");
-require_once("../../models/usuario.php");
+require_once(__DIR__ . "/../../../models/sistema.php");
+require_once(__DIR__ . "/../../../models/usuario.php");
 
 $sistema = new Sistema();
 $usuario = new Usuario();

@@ -1,16 +1,16 @@
 <?php
-require_once("../models/investigador.php");
-require_once("../models/institucion.php");
-require_once("../models/tratamiento.php");    
+require_once(__DIR__ . "/../models/investigador.php");
+require_once(__DIR__ . "/../models/institucion.php");
+require_once(__DIR__ . "/../models/tratamiento.php");    
 $app = new Investigador();
-$app->checkRoll('Investigador');
+$app->checkRoll('Administrador');
 $appinstitucion = new Institucion();
 $apptratamiento = new Tratamiento();
 $instituciones = $appinstitucion->read();
 $tratamientos = $apptratamiento->read();
 $action = isset($_GET['action']) ? $_GET['action'] : 'read';
 $data = array();
-include_once("./views/header.php");
+include_once(__DIR__ . "/views/header.php");
 
 switch ($action){
     case 'create':
@@ -20,16 +20,16 @@ switch ($action){
             if ($filas){
                 $alerta['mensaje'] = "Investigador dado de alta con exito";
                 $alerta['tipo'] = "success";
-                include_once("./views/alert.php");
+                include_once(__DIR__ . "/views/alert.php");
             } else {
                 $alerta['mensaje'] = "El investigador no fue dado de alta";
                 $alerta['tipo'] = "danger";
-                include_once("./views/alert.php");
+                include_once(__DIR__ . "/views/alert.php");
             }
             $data = $app->read();
-            include_once("./views/investigador/index.php");
+            include_once(__DIR__ . "/views/investigador/index.php");
         } else {
-            include_once("./views/investigador/_form.php");
+            include_once(__DIR__ . "/views/investigador/_form.php");
         }
         break;
 
@@ -41,18 +41,18 @@ switch ($action){
             if ($filas){
                 $alerta['mensaje'] = "Investiagador modificada con exito";
                 $alerta['tipo'] = "success";
-                include_once("./views/alert.php");
+                include_once(__DIR__ . "/views/alert.php");
             } else {
                 $alerta['mensaje'] = "El investigador no fue modificado";
                 $alerta['tipo'] = "danger";
-                include_once("./views/alert.php");
+                include_once(__DIR__ . "/views/alert.php");
             }
             $data = $app->read();
-            include_once("./views/investigador/index.php");
+            include_once(__DIR__ . "/views/investigador/index.php");
         } else {
             $id = $_GET['id'];
             $data = $app->readOne($id);
-            include_once("./views/investigador/_form_update.php");
+            include_once(__DIR__ . "/views/investigador/_form_update.php");
         }
         break;
 
@@ -63,23 +63,23 @@ switch ($action){
             if ($filas){
                 $alerta['mensaje'] = "Investigador eliminado con exito";
                 $alerta['tipo'] = "success";
-                include_once("./views/alert.php");
+                include_once(__DIR__ . "/views/alert.php");
             } else {
                 $alerta['mensaje'] = "El investigador no fue eliminado";
                 $alerta['tipo'] = "danger";
-                include_once("./views/alert.php");
+                include_once(__DIR__ . "/views/alert.php");
             }
         }
         $data = $app->read();
-        include_once("./views/investigador/index.php");
+        include_once(__DIR__ . "/views/investigador/index.php");
         break;
 
     case 'read':
     default:
         $data = $app->read();
-        include_once("./views/investigador/index.php");
+        include_once(__DIR__ . "/views/investigador/index.php");
         break;
 }
 
-include_once("./views/footer.php");
+include_once(__DIR__ . "/views/footer.php");
 ?>

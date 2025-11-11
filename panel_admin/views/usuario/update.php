@@ -1,11 +1,10 @@
 <?php
-require_once("../../models/sistema.php");
-require_once("../../models/usuario.php");
+require_once(__DIR__ . "/../../../models/sistema.php");
+require_once(__DIR__ . "/../../../models/usuario.php");
 
 $sistema = new Sistema();
 $usuario = new Usuario();
 
-// Verificar si el usuario está autenticado y tiene el rol adecuado
 if (!$sistema->checkRoll('administrador')) {
     die("Acceso denegado. No tienes permisos para editar usuarios.");
 }
@@ -36,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $id_usuario) {
     ];
 
     $affectedRows = $usuario->update($id_usuario, $data);
-    if ($affectedRows !== null) { // update puede devolver 0 si no hay cambios, pero no null si es exitoso
+    if ($affectedRows !== null) { 
         $sistema->alerta("Usuario actualizado correctamente.", "success");
         header("Location: index.php");
         exit();

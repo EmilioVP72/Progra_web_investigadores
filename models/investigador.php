@@ -1,5 +1,5 @@
 <?php
-require_once("../models/sistema.php");
+require_once(__DIR__ . "/sistema.php");
 class Investigador extends Sistema{
     function create($data){
         $this->connect();
@@ -33,10 +33,10 @@ class Investigador extends Sistema{
             $sql = "INSERT INTO usuario_rol(id_usuario, id_rol) VALUES (:id_usuario, :id_rol)";
             $sth = $this->_db->prepare($sql);
             $sth->bindParam(":id_usuario", $id_usuario, PDO::PARAM_INT);
-            $sth->bindParam(":id_rol", 2, PDO::PARAM_INT);
+            $sth->bindValue(":id_rol", 2, PDO::PARAM_INT);
             $sth->execute();
             $sth->bindParam(":id_usuario", $id_usuario, PDO::PARAM_INT);
-            $sth->bindParam(":id_rol", 3, PDO::PARAM_INT);
+            $sth->bindValue(":id_rol", 3, PDO::PARAM_INT);
             $sth->execute();
             $sql = "SELECT * FROM investigador ORDER BY id_investigador DESC LIMIT 1";
             $sth = $this->_db->prepare($sql);

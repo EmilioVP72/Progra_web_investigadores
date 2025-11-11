@@ -1,10 +1,10 @@
 <?php
-require_once("../models/tratamiento.php");
+require_once(__DIR__ . "/../models/tratamiento.php");
 $app = new Tratamiento();
 $app->checkRoll('Administrador');
 $action = isset($_GET['action']) ? $_GET['action'] : 'read';
 $data = array();
-include_once("./views/header.php");
+include_once(__DIR__ . "/views/header.php");
 
 switch ($action){
     case 'create':
@@ -14,16 +14,16 @@ switch ($action){
             if ($filas){
                 $alerta['mensaje'] = "Tratamiento dada de alta con exito";
                 $alerta['tipo'] = "success";
-                include_once("./views/alert.php");
+                include_once(__DIR__ . "/views/alert.php");
             } else {
                 $alerta['mensaje'] = "El tratamiento no fue dada de alta";
                 $alerta['tipo'] = "danger";
-                include_once("./views/alert.php");
+                include_once(__DIR__ . "/views/alert.php");
             }
             $data = $app->read();
-            include_once("./views/tratamiento/index.php");
+            include_once(__DIR__ . "/views/tratamiento/index.php");
         } else {
-            include_once("./views/tratamiento/_form.php");
+            include_once(__DIR__ . "/views/tratamiento/_form.php");
         }
         break;
 
@@ -35,18 +35,18 @@ switch ($action){
             if ($filas){
                 $alerta['mensaje'] = "tratamiento modificado con exito";
                 $alerta['tipo'] = "success";
-                include_once("./views/alert.php");
+                include_once(__DIR__ . "/views/alert.php");
             } else {
                 $alerta['mensaje'] = "el tratamiento no fue modificada";
                 $alerta['tipo'] = "danger";
-                include_once("./views/alert.php");
+                include_once(__DIR__ . "/views/alert.php");
             }
             $data = $app->read();
-            include_once("./views/tratamiento/index.php");
+            include_once(__DIR__ . "/views/tratamiento/index.php");
         } else {
             $id = $_GET['id'];
             $data = $app->readOne($id);
-            include_once("./views/tratamiento/_form_update.php");
+            include_once(__DIR__ . "/views/tratamiento/_form_update.php");
         }
         break;
 
@@ -57,23 +57,23 @@ switch ($action){
             if ($filas){
                 $alerta['mensaje'] = "tratamiento eliminado con exito";
                 $alerta['tipo'] = "success";
-                include_once("./views/alert.php");
+                include_once(__DIR__ . "/views/alert.php");
             } else {
                 $alerta['mensaje'] = "el tratamiento no fue eliminado";
                 $alerta['tipo'] = "danger";
-                include_once("./views/alert.php");
+                include_once(__DIR__ . "/views/alert.php");
             }
         }
         $data = $app->read();
-        include_once("./views/tratamiento/index.php");
+        include_once(__DIR__ . "/views/tratamiento/index.php");
         break;
 
     case 'read':
     default:
         $data = $app->read();
-        include_once("./views/tratamiento/index.php");
+        include_once(__DIR__ . "/views/tratamiento/index.php");
         break;
 }
 
-include_once("./views/footer.php");
+include_once(__DIR__ . "/views/footer.php");
 ?>

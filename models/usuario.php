@@ -1,5 +1,5 @@
 <?php
-require_once("../models/sistema.php");
+require_once(__DIR__ . "/sistema.php");
 
 
 class Usuario extends Sistema{

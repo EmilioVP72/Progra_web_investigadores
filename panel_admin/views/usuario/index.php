@@ -1,16 +1,11 @@
 <?php
-require_once("../../models/sistema.php");
-require_once("../../models/usuario.php");
+require_once(__DIR__ . "/../../../models/sistema.php");
+require_once(__DIR__ . "/../../../models/usuario.php");
 
 $sistema = new Sistema();
 $usuario = new Usuario();
 
-// Verificar si el usuario está autenticado y tiene el rol adecuado
-// Asumiendo que 'administrador' es el rol que puede gestionar usuarios
 if (!$sistema->checkRoll('administrador')) {
-    // Si no tiene el rol, redirigir o mostrar un mensaje de error
-    // Por simplicidad, aquí solo se detiene la ejecución.
-    // En un entorno real, podrías redirigir a una página de inicio o de error.
     die("Acceso denegado. No tienes permisos para ver esta sección.");
 }
 
@@ -23,7 +18,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['id']))
     } else {
         $sistema->alerta("Error al eliminar el usuario.", "danger");
     }
-    header("Location: index.php"); // Redirigir para evitar reenvío del formulario
+    header("Location: index.php"); 
     exit();
 }
 
@@ -43,7 +38,7 @@ $data = $usuario->read();
     <div class="container mt-5">
         <h1 class="mb-4">Gestión de Usuarios</h1>
 
-        <?php $sistema->showAlerta(); // Mostrar alertas si las hay ?>
+        <?php $sistema->showAlerta(); ?>
 
         <a href="create.php" class="btn btn-primary mb-3">Nuevo Usuario</a>
 
